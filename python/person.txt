@@ -14,7 +14,7 @@ What does this really do?
 
 # return encode_pubkey(fast_multiply(G, privkey), f)
 
-In short, it decodes the input and multipies the result by a point on
+In short, it decodes the input and multiplies the result by a point on
 an elliptic curve, producing a new point, which can be thought of as
 our "raw" public key. Then it encodes those points based on the format
 of the original input (in this case hex) and prepends the
