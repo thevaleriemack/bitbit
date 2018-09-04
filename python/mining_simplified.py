@@ -13,7 +13,7 @@ def concatenate(nonce, prev_hash, transactions):
 
 def hash_sha256(concatenated):
     # Bitcoin uses the SHA256 hash algorithm for mining
-    return hashlib.sha256(concatenated.encode('utf-8')).hexdigest()
+    return hashlib.sha256(str(concatenated).encode('utf-8')).hexdigest()
 
 # If we get a hash value inside of our defined target space we have found a
 # solution to the puzzle. In this case, we will print the hash solution (which
