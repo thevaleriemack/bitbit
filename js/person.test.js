@@ -4,9 +4,9 @@ const Person = require('./person.js');
 
 describe('new Person("Alice", "Nakamoto")', function() {
   const alice = new Person("Alice", "Nakamoto");
-  const private_key = '1dd8c0c13e49e7c5b60107f1c837bc8da2e118496084d2db2848d34f9ce0586a';
-  const public_key = '04a41d97c9932764b042cd05223b54eb19ec350cf83400fbc38ca4f573782393e82e4bdf62603600f715f0e5a273dfb536513bf269282e980049bffd5bb285aca2';
-  it('should create a person with keys and an address based on Alice Nakamoto',
+  const private_key = '2d3ba8456fb4b275cfc0e5a0e189b4603174ddbbb55d743853564e2f7b24155a';
+  const public_key = '04513bcbb2a4d384cad45fd21b5a3ab4c47d8517ef0f54b0c12bc30eb6f21f847aa31476bf782677c263d2bf1efbe2168a99442e7a613550125d5aabe194940294';
+  it('should create a person with keys and an address based on "Alice Nakamoto"',
     () => {
       expect(alice.private_key).to.equal(private_key);
       expect(alice.public_key).to.equal(public_key);

@@ -6,23 +6,23 @@ function privtopub(priv) {
   return ecdh.getPublicKey('hex');
 }
 
-function sha256(value, secret='theval', format='') {
-  // returns buffer
-  return crypto.createHmac('sha256', secret)
-               .update(value)
-               .digest(format);
+function hashSHA256(value, format='') {
+  const hash = crypto.createHash('sha256');
+  hash.update(""+value); // must be a string
+  return hash.digest(format); // returns buffer by default
 }
 
 function Person(first_name, last_name) {
   /*
   It would be better to hash something random that no one would be able to guess
   */
-  this.private_key = sha256(first_name+" "+last_name, undefined, 'hex');
-  this.public_key = privtopub(sha256(first_name+" "+last_name));
+  const private_key_buffer = hashSHA256(first_name+" "+last_name);
+  this.private_key = private_key_buffer.toString('hex');
+  this.public_key = privtopub(private_key_buffer);
   this.address = null;
 }
 
-alice = new Person("Alice", "Nakamoto");
-console.log(alice);
+// alice = new Person("Alice", "Nakamoto");
+// console.log(alice);
 
 module.exports = Person;
