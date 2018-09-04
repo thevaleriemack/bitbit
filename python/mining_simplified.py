@@ -19,7 +19,7 @@ def hash_sha256(concatenated):
 # solution to the puzzle. In this case, we will print the hash solution (which
 # will be this block's hash) and return true.
 
-def solves_hash_puzzle(nonce, prev_hash, transactions):
+def solve_hash_puzzle(nonce, prev_hash, transactions):
     concatenated = concatenate(nonce, prev_hash, transactions)
     proposed_solution = hash_sha256(concatenated)
     # For the sake of example, we will define our target space as any hash
@@ -31,22 +31,23 @@ def solves_hash_puzzle(nonce, prev_hash, transactions):
 
 # Now let's mine!
 
-def mine_simple(prev_hash, transactions, max):
+def mine_simple(max_nonce, prev_hash, transactions):
     print('\nMining...')
-    # Note: max is just used for demonstration purposes to avoid an endless loop
+    # Note: max_nonce is just used for demonstration purposes to avoid an endless
+    # loop
     nonce = 0 # Initalized to zero -- Is this true in Bitcoin?
-    while (solves_hash_puzzle(nonce, prev_hash, transactions) == False
-            and nonce < max):
+    while (solve_hash_puzzle(nonce, prev_hash, transactions) == False
+            and nonce < max_nonce):
         nonce += 1
     print(f'Nonce that produced solution: {nonce}')
 
 # Uncomment the code below to see the program run
 """
+_max_nonce = 100000
 prev_hash = hashlib.sha256('Satoshi Nakamoto'.encode('utf-8')).hexdigest()
 transactions = ["tx1", "tx2", "tx3"]
-_max = 100000
 
-mine_simple(prev_hash, transactions, _max)
+mine_simple(_max_nonce, prev_hash, transactions)
 """
 
 # Notice the nonce value tells us how many attempts were required to find a
