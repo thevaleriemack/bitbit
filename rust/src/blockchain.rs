@@ -146,7 +146,7 @@ impl Chain {
         block.header.merkle_root = Chain::calculate_merkle_root(block.transactions.clone());
         Chain::mine(&mut block.header);
 
-        println!("{:?}", &block); // print with debug flag
+        println!("{:#?}", &block); // print with debug flag
         self.blocks.push(block);
 
         true

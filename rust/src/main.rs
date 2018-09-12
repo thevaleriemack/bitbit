@@ -17,27 +17,28 @@ fn main() {
 
     println!("Welcome to the Rust blockchain demo!");
 
-    println!("Input a miner address: ");
+    print!("Input a miner address: ");
     io::stdout().flush().expect("Stdout flush failed");
     io::stdin().read_line(&mut miner_addr)
         .expect("Failed to read line");
-    println!("Set the mining difficulty: ");
+    print!("Set the mining difficulty: ");
     io::stdout().flush().expect("Stdout flush failed");
     io::stdin().read_line(&mut difficulty)
         .expect("Failed to read line");
     let miner_addr = miner_addr.trim().to_string();
-    let difficulty = difficulty.trim().parse::<u32>().expect("Difficulty must be an integer");
-    println!("Generating genesis block...");
+    let difficulty = difficulty.trim().parse::<u32>()
+        .expect("Difficulty must be an integer");
+    println!("\nGenerating genesis block...");
     let mut chain = blockchain::Chain::new(miner_addr, difficulty);
     println!("Genesis block mined.");
 
     loop {
         println!("\n** Main Menu **");
-        println!("Enter \"q!\" to exit\n");
+        println!("Enter \"q!\" to exit");
         println!("1) New Transaction");
         println!("2) Mine");
         println!("3) Change Difficulty");
-        println!("Enter your choice: ");
+        print!("Enter your choice: ");
         io::stdout().flush().expect("Stdout flush failed");
         selection.clear();
         io::stdin().read_line(&mut selection)
@@ -54,22 +55,23 @@ fn main() {
                 let mut recipient = String::new();
                 let mut amount = String::new();
 
-                println!("Enter sender address: ");
+                print!("Enter sender address: ");
                 io::stdout().flush().expect("Stdout flush failed");
                 io::stdin().read_line(&mut sender)
                     .expect("Failed to read line");
-                println!("Enter recipient address: ");
+                print!("Enter recipient address: ");
                 io::stdout().flush().expect("Stdout flush failed");
                 io::stdin().read_line(&mut recipient)
                     .expect("Failed to read line");
-                println!("Enter amount to send: ");
+                print!("Enter amount to send: ");
                 io::stdout().flush().expect("Stdout flush failed");
                 io::stdin().read_line(&mut amount)
                     .expect("Failed to read line");
 
                 let sender = sender.trim().to_string();
                 let recipient = recipient.trim().to_string();
-                let amount = amount.trim().parse::<u32>().expect("Amount must be an integer");
+                let amount = amount.trim().parse::<u32>()
+                    .expect("Amount must be an integer");
 
                 let result = chain.add_transaction(sender, recipient, amount);
                 match result {
@@ -87,7 +89,7 @@ fn main() {
             },
             "3" => {
                 let mut difficulty = String::new();
-                println!("Set the mining difficulty: ");
+                print!("Set the mining difficulty: ");
                 io::stdout().flush().expect("Stdout flush failed");
                 io::stdin().read_line(&mut difficulty)
                     .expect("Failed to read line");
