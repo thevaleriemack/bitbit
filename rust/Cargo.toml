@@ -1,0 +1,12 @@
+[package]
+name = "rust"
+version = "0.1.0"
+authors = ["Val <dgm97@cornell.edu>"]
+
+[dependencies]
+ring = "0.13.2"
+time = "*"
+serde = "1.0.78"
+serde_derive = "*"
+serde_json = "*"
+hex = "0.3.2"
