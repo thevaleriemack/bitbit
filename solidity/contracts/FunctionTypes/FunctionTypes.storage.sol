@@ -1,9 +1,9 @@
 pragma solidity ^0.4.24;
-import { FunctionTypes as lib } from "./FunctionTypes.lib.sol";
+import { FunctionTypesLibrary as lib } from "./FunctionTypes.lib.sol";
 
 // storage
 
-contract FunctionTypes {
+contract FunctionTypesStorage {
 
     mapping (
         address => function (uint256, uint256) internal pure returns (uint256)

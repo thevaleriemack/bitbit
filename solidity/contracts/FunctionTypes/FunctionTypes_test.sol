@@ -1,15 +1,15 @@
 pragma solidity >=0.4.0 <0.6.0;
 import "remix_tests.sol"; // injected by remix-tests npm module
 import {
-    FunctionTypes as FunctionTypesLib
+    FunctionTypesLibrary
 } from "./FunctionTypes.lib.sol";
 import {
-    FunctionTypes as FunctionTypesStorage
+    FunctionTypesStorage
 } from "./FunctionTypes.storage.sol";
 
 contract test_Storage {
     FunctionTypesStorage functionTypesStorage;
-    FunctionTypesLib functionTypesLib;
+    FunctionTypesLibrary functionTypesLib;
 
     function beforeAll() public {
         functionTypesStorage = new FunctionTypesStorage();
@@ -35,7 +35,7 @@ contract test_Storage {
 }
 
 contract test_Library {
-    FunctionTypesLib functionTypesLib;
+    FunctionTypesLibrary functionTypesLib;
 
     function beforeAll() public {
         functionTypesLib = new FunctionTypesLib();

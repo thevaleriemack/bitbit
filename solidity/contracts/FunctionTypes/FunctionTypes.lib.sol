@@ -7,7 +7,7 @@ pragma solidity ^0.4.24;
  * functions), because libraries are assumed to be stateless.
  */
 
-library FunctionTypes {
+library FunctionTypesLibrary {
 
     function makeMetal(
         uint256 a,
